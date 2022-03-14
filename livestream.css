@@ -1,0 +1,17 @@
+body { border: 20px solid midnightblue; }
+
+.livestream__epg--next{
+  display: none;
+}
+.livestream__player{
+  width: calc(100% - 8em);
+}
+.livestream__epg--now {
+  width: 8em;
+}
+time[data-icon-left="droplet"]{
+  background:none;
+  padding-left: 0!important;
+  font-weight: bold;
+  color: #fff;
+}

@@ -1,0 +1,64 @@
+/* change the layout to always give the video player a sensible width */
+@media(min-width:1024px) {
+  .video-detail {
+    grid-template-areas: "video" "playlist" "content" !important;
+    grid-template-rows: repeat(3, min-content) !important;
+    grid-template-columns: initial !important;
+    max-width: 1600px !important;
+    width: 100vw !important;
+    --main-content-width: 100% !important;
+  }
+  #navigation {
+    height: 40px !important;
+  }
+  .video-detail__player {
+    max-width: calc((100vh - 40px - 0.5rem) * 1.75) !important;
+    min-width: 800px !important;
+    width: 100% !important;
+  }
+  .video-detail__video vrtnu-video-information {
+    margin:  1rem 0.5rem !important;
+    padding: 0 !important;
+  }
+ .video-detail__playlist,
+ .video-detail__playlist [data-lazy-loaded] {
+    height: auto !important;
+    position: initial !important;
+  }
+}
+
+/* just list the chapters as a TOC rather than inline,
+   which would overflow and cause trouble */
+.chapters-wrapper .chapters-list {
+  display: initial !important;
+  mask-image: none !important;
+  mask-size: unset !important;
+  margin: 0 1rem !important;
+}
+.chapters-wrapper .chapters-list li {
+  margin: initial !important;
+}
+.chapters-wrapper {
+  padding: 0 !important;
+  mask-image: none !important;
+}
+.chapters-wrapper vrtnu-button {
+  background: none !important;
+  display: initial !important;
+  --button-justify-content: left !important;
+  --button-color-background: transparent !important;
+  transition: none !important;
+}
+.chapters-wrapper vrtnu-button span {
+  font-size: 1.2rem !important;
+  line-height: 1.4 !important;
+}
+.chapters-wrapper vrtnu-button span::after {
+  top: 1rem !important;
+}
+.chapters-wrapper vrtnu-button span::before {
+  width: 3rem !important;
+}
+.chapters-wrapper .chapters-list:hover {
+  mask-position: unset !important;
+}

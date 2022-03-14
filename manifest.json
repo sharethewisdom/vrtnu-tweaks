@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Vrtnu tweak",
+  "version": "1.1",
+  "description": "Vrtnu tweaks",
+  "permissions": [ "*://www.vrt.be/*" ],
+  "icons": {
+    "32": "icons/vrtnu.ico"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.vrt.be/vrtnu/livestream/"],
+      "run_at": "document_start",
+      "css": ["livestream.css"]
+    },
+    {
+      "matches": ["https://www.vrt.be/vrtnu/a-z/*"],
+      "run_at": "document_idle",
+      "js": ["a-z.js"],
+      "css": ["a-z.css"]
+    }
+  ]
+}
