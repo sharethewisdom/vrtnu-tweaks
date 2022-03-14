@@ -3,9 +3,14 @@
   "name": "Vrtnu tweak",
   "version": "1.1",
   "description": "Vrtnu tweaks",
-  "permissions": [ "*://www.vrt.be/*" ],
+  "permissions": [ "https://www.vrt.be/*" ],
   "icons": {
     "32": "icons/vrtnu.ico"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "update_url": "https://raw.githubusercontent.com/sharethewisdom/vrtnu-tweaks/main/updates.json"
+    }
   },
   "content_scripts": [
     {
