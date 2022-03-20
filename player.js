@@ -32,7 +32,15 @@ let stylePlayer = (player) => {
   try {
     recursiveWalk(player, (node) => {
       if (node.classList?.contains("overlay-container-gradient")) {
-        node.style.display = "none";
+        node.style.setProperty("display", "none", "important")
+        node.style.setProperty("background", "none", "important")
+      }
+      if (node.classList?.contains("control-container--middle")) {
+        node.style.setProperty("opacity", "0", "important")
+      }
+      if (node.classList?.contains("control-container--bottom--controls")
+        || node.classList?.contains("video-title")) {
+        node.style.setProperty("background-color", "rgba(0,0,0,0.8)", "important")
       }
       if (node.classList?.contains("slider-part-filled")
         || node.classList?.contains("slider-vrtnu")
@@ -42,8 +50,7 @@ let stylePlayer = (player) => {
         node.style.setProperty("margin-top", "0px", "important")
       }
       if (node.classList?.contains("slider")) {
-        node.style.setProperty("background-color", "rgba(255,255,255,0.4)", "important")
-        node.style.setProperty("box-shadow", "inset 0 2px 3px rgba(#000, .5)", "important")
+        node.style.setProperty("background-color", "rgba(255,255,255,0.5)", "important")
       }
       if (node.classList?.contains("slider-part-filled")
         || node.classList?.contains("slider-part-played")) {
@@ -69,6 +76,7 @@ let doStuff = (player) => {
   let container = player.shadowRoot.querySelector('.vrt-mediaplayer-container');
   let video = player.shadowRoot.querySelector('video');
   let videoui = player.shadowRoot.querySelector('video-ui-container');
+  // container.onmousemove = () => { return true };
   videoui.dispatchEvent(new CustomEvent('doPlay'));
   setTimeout(() => {
     if (video.muted) videoui.dispatchEvent(new CustomEvent('doUnmute'));
@@ -132,6 +140,11 @@ if (player === undefined) {
           HTMLelementObserver.observe(node, { childList: true });
         } else if (node.tagName === "VRT-MEDIAPLAYER"){
           HTMLelementObserver.disconnect()
+          HTMLelementObserver.observe(node, { childList: true });
+          setTimeout(doStuff, 1000, node);
+        } else if (node.tagName === "VIDEO-OVERLAY-CONTAINER"){
+          HTMLelementObserver.disconnect()
+          // just to make sure that the damn gradient is GONE
           setTimeout(doStuff, 1000, node);
         }
       })

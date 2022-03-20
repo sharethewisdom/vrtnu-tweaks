@@ -3,7 +3,9 @@
   "name": "Vrtnu tweak",
   "version": "1.1",
   "description": "Vrtnu tweaks",
-  "permissions": [ "https://www.vrt.be/*" ],
+  "permissions": [
+    "https://www.vrt.be/*"
+  ],
   "icons": {
     "32": "icons/vrtnu.ico"
   },
@@ -16,13 +18,15 @@
     {
       "matches": ["https://www.vrt.be/vrtnu/livestream/"],
       "run_at": "document_start",
-      "css": ["livestream.css"]
+      "css": ["live.css"]
     },
     {
-      "matches": ["https://www.vrt.be/vrtnu/a-z/*"],
-      "run_at": "document_idle",
-      "js": ["a-z.js"],
-      "css": ["a-z.css"]
+      "matches": [
+        "https://www.vrt.be/*",
+      ],
+      "run_at": "document_start",
+      "js": ["player.js"],
+      "css": ["player.css"]
     }
   ]
 }
