@@ -1,14 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "Vrtnu tweak",
-  "version": "1.1",
+  "name": "Vrtnu tweaks",
+  "version": "1.2",
   "description": "Vrtnu tweaks",
-  "permissions": [
-    "https://www.vrt.be/*"
-  ],
-  "icons": {
-    "32": "icons/vrtnu.ico"
-  },
+  "permissions": [ "https://www.vrt.be/*", "https://sporza.be/*", "https://*.een.be/*" ],
+  "icons": { "32": "icons/vrtnu.ico" },
   "browser_specific_settings": {
     "gecko": {
       "update_url": "https://raw.githubusercontent.com/sharethewisdom/vrtnu-tweaks/main/updates.json"
@@ -16,17 +12,17 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.vrt.be/vrtnu/livestream/"],
-      "run_at": "document_start",
-      "css": ["live.css"]
+      "matches": [ "https://www.vrt.be/vrtnu/livestream/" ],
+      "css": [ "live.css" ]
     },
     {
-      "matches": [
-        "https://www.vrt.be/*",
-      ],
+      "matches": [ "https://www.vrt.be/vrtnu/a-z/*" ],
+      "css": [ "a-z.css" ]
+    },
+    {
+      "matches": [ "https://www.vrt.be/*", "https://sporza.be/*", "https://dagelijksekost.een.be/*" ],
       "run_at": "document_start",
-      "js": ["player.js"],
-      "css": ["player.css"]
+      "js": [ "player.js" ]
     }
   ]
 }
